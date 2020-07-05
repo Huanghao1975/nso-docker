@@ -3,11 +3,26 @@ FROM debian:buster
 ARG NSO_INSTALL_FILE
 
 COPY $NSO_INSTALL_FILE /tmp/nso
+RUN apt-get update -y \
+    && apt-get install -y gnupg2
+COPY sources.list /etc/apt/sources.list
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3B4FE6ACC0B21F32 \
+    && apt-get update -y
+RUN apt-get install -qy \
+   python3.7 \
+   python3-pip \
+  && rm -rf /usr/bin/python3 \
+  && ln -s /usr/bin/python3.7 /usr/bin/python3 \
+  && pip3 install pytz
 RUN apt-get update \
   && apt-get install -qy \
      openssh-client \
      libexpat1 \
+     python3.7 \
   && sh /tmp/nso --system-install --non-interactive --run-dir /nso/run --log-dir /log \
+  && rm -rf /usr/bin/python3 \
+  && ln -s /usr/bin/python3.7 /usr/bin/python3 \
+  && pip3 install pytz \
   && sed -i -e 's/exec python -u/exec python3 -u/' /opt/ncs/current/bin/ncs-start-python-vm
 
   # wipe SSH keys
@@ -51,14 +66,23 @@ FROM debian:buster
 # This installation command needs to be kept in sync between the base image and
 # development image as to result in the same Docker image layer and thus achieve
 # layer reuse between the -base and -dev image
-RUN apt-get update \
-  && apt-get install -qy \
+RUN apt-get update -y \
+    && apt-get install -y gnupg2
+COPY sources.list /etc/apt/sources.list
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3B4FE6ACC0B21F32 \
+    && apt-get update -y
+RUN apt-get install -qy \
+   python3.7 \
+   python3-pip \
+  && rm -rf /usr/bin/python3 \
+  && ln -s /usr/bin/python3.7 /usr/bin/python3 \
+  && pip3 install pytz
+RUN apt-get install -qy \
   default-jre-headless \
   iputils-ping \
   libexpat1 \
   openssh-client \
   procps \
-  python3 \
   tcpdump \
   telnet \
   xmlstarlet \
