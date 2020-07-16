@@ -25,11 +25,6 @@ RUN apt-get install -qy \
 RUN apt-get update \
   && apt-get install -qy \
   default-jre-headless \
-  iputils-ping \
-  procps \
-  tcpdump \
-  telnet \
-  xmlstarlet \
   make \
   && apt-get -qy autoremove \
   && apt-get clean \
