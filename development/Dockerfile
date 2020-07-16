@@ -23,6 +23,7 @@ RUN apt-get install -qy \
   && sed -i -e 's/exec python -u/exec python3 -u/' /opt/ncs/current/bin/ncs-start-python-vm
 
 RUN apt-get update \
+  && apt-get dist-upgrade\
   && apt-get install -qy \
   default-jre-headless \
   make \
