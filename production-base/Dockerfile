@@ -58,7 +58,7 @@ RUN rm -f /etc/ncs/ssh/* \
      /etc/ncs/ncs.conf
 
 FROM debian:buster
-
+ENV http_proxy http://172.16.1.10:3128/
 # This installation command needs to be kept in sync between the base image and
 # development image as to result in the same Docker image layer and thus achieve
 # layer reuse between the -base and -dev image
