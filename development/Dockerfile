@@ -12,19 +12,14 @@ RUN apt-get install -qy \
   xsltproc \
   wget \
   && wget https://github.com/hawk/lux/releases/download/lux-2.1/lux_2.1-1.deb
+
 RUN apt-get install -qy \
-    make gcc
-RUN wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz \
-  && tar -zxvf Python-3.7.5.tgz \
-  && cd Python-3.7.5 \
-  && ./configure --prefix=/usr/local/python3.7.5 \
-  && make \
-  && make install \
-  && PATH=$PATH:$HOME/bin:/usr/local/python3.7.5/bin \
-  && apt-get install -qy python3-pip \
+   python3.7 \
+   python3-pip \
   && rm -rf /usr/bin/python3 \
   && ln -s /usr/bin/python3.7 /usr/bin/python3 \
   && pip3 install pytz xmltodict
+
 RUN apt-get update -y \
   && apt-get install -qy \
   openssh-client \
