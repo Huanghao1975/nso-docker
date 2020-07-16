@@ -34,7 +34,7 @@ RUN apt-get update \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 
-RUN apt-get install -qyxsltproc \
+RUN apt-get install -qy xsltproc \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
 
