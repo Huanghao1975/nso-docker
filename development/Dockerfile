@@ -22,8 +22,8 @@ RUN apt-get install -qy \
   && sh /tmp/nso --system-install --non-interactive --run-dir /nso/run --log-dir /log \
   && sed -i -e 's/exec python -u/exec python3 -u/' /opt/ncs/current/bin/ncs-start-python-vm
 
-RUN apt-get update \
-  && apt-get dist-upgrade\
+RUN apt-get update -y \
+  && apt-get dist-upgrade -y \
   && apt-get install -qy \
   default-jre-headless \
   make \
