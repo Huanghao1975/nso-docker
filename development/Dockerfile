@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM ubuntu
 
 ARG NSO_INSTALL_FILE
 ENV http_proxy http://172.16.1.10:3128/
