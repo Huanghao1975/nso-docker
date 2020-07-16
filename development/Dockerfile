@@ -34,6 +34,8 @@ RUN apt-get update \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 RUN  apt-get update -y
+ENV TZ=Asia/Beijing
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN  apt-get install -qy tzdata
 RUN  apt-get update \
   && apt-get install -y tzdata \
