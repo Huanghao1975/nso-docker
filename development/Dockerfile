@@ -6,7 +6,6 @@ COPY $NSO_INSTALL_FILE /tmp/nso
 RUN apt-get update -y
 
 RUN apt-get install -qy \
-  xsltproc \
   wget \
   && wget https://github.com/hawk/lux/releases/download/lux-2.1/lux_2.1-1.deb
 
@@ -15,7 +14,7 @@ RUN apt-get install -qy \
    python3-pip \
   && rm -rf /usr/bin/python3 \
   && ln -s /usr/bin/python3.7 /usr/bin/python3 \
-  && pip3 install pytz xmltodict
+  && pip3 install pytz
 
 RUN apt-get update -y \
   && apt-get install -qy \
@@ -32,6 +31,7 @@ RUN apt-get update \
   tcpdump \
   telnet \
   xmlstarlet \
+  make \
   && apt-get -qy autoremove \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache \
