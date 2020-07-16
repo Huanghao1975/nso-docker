@@ -11,13 +11,13 @@ RUN apt-get install -qy \
 
 RUN apt-get install -qy \
    python3.7 \
-   python3-pip \
+   python3-pip
+RUN apt-get install -qy \
   && rm -rf /usr/bin/python3 \
   && ln -s /usr/bin/python3.7 /usr/bin/python3 \
-  && pip3 install pytz
+  && python3 -m pip install
 
-RUN apt-get update -y \
-  && apt-get install -qy \
+RUN apt-get install -qy \
   openssh-client \
   libexpat1 \
   && sh /tmp/nso --system-install --non-interactive --run-dir /nso/run --log-dir /log \
