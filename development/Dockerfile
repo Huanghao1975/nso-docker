@@ -26,6 +26,7 @@ RUN apt-get update \
   && apt-get install -qy \
   default-jre-headless \
   make \
+  xsltproc \
   && apt-get -qy autoremove \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache \
