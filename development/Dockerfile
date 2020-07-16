@@ -33,7 +33,7 @@ RUN apt-get update \
   # Add root to ncsadmin group for easier command-line tools usage
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
-
+RUN  apt-get install -qy tzdata \
 RUN  apt-get update \
   && apt-get install -y tzdata \
   && apt-get install -qy libxslt1-dev \
