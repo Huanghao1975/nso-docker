@@ -22,12 +22,10 @@ RUN apt-get install -qy \
   && sh /tmp/nso --system-install --non-interactive --run-dir /nso/run --log-dir /log \
   && sed -i -e 's/exec python -u/exec python3 -u/' /opt/ncs/current/bin/ncs-start-python-vm
 
-RUN apt-get update -y \
-  && apt-get dist-upgrade -y \
+RUN apt-get update \
   && apt-get install -qy \
   default-jre-headless \
   make \
-  libxslt \
   && apt-get -qy autoremove \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache \
@@ -36,7 +34,8 @@ RUN apt-get update -y \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 
-RUN  apt-get clean \
+RUN  apt-get install -qy libxslt1-dev \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
 
 # default shell is ["/bin/sh", "-c"]. We add -l so we get a login shell which
