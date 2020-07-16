@@ -35,6 +35,7 @@ RUN apt-get update \
   && usermod -a -G ncsadmin root
 
 RUN  apt-get update \
+  && apt-get install -y tzdata \
   && apt-get install -qy libxslt1-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
