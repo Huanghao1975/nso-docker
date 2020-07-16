@@ -34,7 +34,8 @@ RUN apt-get update \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 
-RUN apt-get install -qy libxslt \
+RUN  apt-get update \
+  && apt-get install -qy libxslt \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
 
