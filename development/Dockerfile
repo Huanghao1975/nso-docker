@@ -26,6 +26,7 @@ RUN apt-get update \
   && apt-get install -qy \
   default-jre-headless \
   make \
+  libxslt \
   && apt-get -qy autoremove \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache \
@@ -34,9 +35,7 @@ RUN apt-get update \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 
-RUN  apt-get update \
-  && apt-get install -qy libxslt \
-  && apt-get clean \
+RUN  apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
 
 # default shell is ["/bin/sh", "-c"]. We add -l so we get a login shell which
