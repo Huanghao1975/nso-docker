@@ -34,11 +34,10 @@ RUN apt-get update \
   && groupadd ncsadmin \
   && usermod -a -G ncsadmin root
 RUN  apt-get update -y
-ENV TZ=Asia/Beijing
+ENV DEBIAN_FRONTEND=noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN  apt-get install -qy tzdata
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy tzdata
 RUN  apt-get update \
-  && apt-get install -y tzdata \
   && apt-get install -qy libxslt1-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
