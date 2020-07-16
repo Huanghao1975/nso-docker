@@ -13,7 +13,7 @@ RUN apt-get install -qy \
   wget \
   && wget https://github.com/hawk/lux/releases/download/lux-2.1/lux_2.1-1.deb
 RUN apt-get install -qy \
-    make
+    make gcc
 RUN wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz \
   && tar -zxvf Python-3.7.5.tgz \
   && cd Python-3.7.5 \
