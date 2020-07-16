@@ -14,7 +14,7 @@ RUN apt-get install -qy \
    python3-pip
 RUN apt-get install -qy \
   && rm -rf /usr/bin/python3 \
-  && ln -s /usr/bin/python3.7 /usr/bin/python3 \
+  && ln -s /usr/bin/python3.8 /usr/bin/python3 \
   && python3 -m pip install
 
 RUN apt-get install -qy \
