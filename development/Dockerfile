@@ -6,9 +6,6 @@ COPY $NSO_INSTALL_FILE /tmp/nso
 RUN apt-get update -y
 
 RUN apt-get install -qy \
-    erlang \
-  erlang-dev \
-  erlang-nox \
   xsltproc \
   wget \
   && wget https://github.com/hawk/lux/releases/download/lux-2.1/lux_2.1-1.deb
