@@ -38,7 +38,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy tzdata
 RUN  apt-get update \
-  && apt-get install -qy libxslt1-dev \
+  && apt-get install -qy xsltproc \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /root/.cache
 
